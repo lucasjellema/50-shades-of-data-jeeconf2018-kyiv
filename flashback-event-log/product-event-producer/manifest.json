@@ -1,0 +1,9 @@
+{
+  "runtime":{
+    "majorVersion":"8"
+  },
+  "command": "node product-event-bridge.js",
+  "release": {},
+  "notes": "A REST API for Product Events - received through GET, published to Kafka "
+}
+
