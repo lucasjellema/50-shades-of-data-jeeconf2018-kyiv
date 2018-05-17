@@ -1,0 +1,9 @@
+{
+  "runtime":{
+    "majorVersion":"8"
+  },
+  "command": "node customer-ms.js",
+  "release": {},
+  "notes": "A REST API for the Customer microsevice (GET and POST requests) "
+}
+

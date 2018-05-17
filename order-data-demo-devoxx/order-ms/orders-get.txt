@@ -1,0 +1,108 @@
+var express = require('express')
+  , http = require('http');
+
+var bodyParser = require('body-parser') // npm install body-parser
+var ordersAPI = require( "./orders-api.js" );
+
+var app = express();
+var server = http.createServer(app);
+
+var PORT = process.env.PORT || 3000;
+var APP_VERSION = '0.0.4.06';
+
+var allowCrossDomain = function(req, res, next) {
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+    res.header('Access-Control-Allow-Headers', 'Content-Type');
+    res.header('Access-Control-Allow-Credentials', true); 
+    next();
+}
+
+server.listen(PORT, function () {
+  console.log('Server running, version '+APP_VERSION+', Express is listening... at '+PORT+" for Orders Data API");
+});
+
+app.use(bodyParser.json()); // for parsing application/json
+app.use(allowCrossDomain);
+
+ordersAPI.registerListeners(app);
+
+
+
+
+
+var oracledb = require('oracledb');
+
+var ordersAPI = module.exports;
+var apiURL = "/order-api";
+
+ordersAPI.registerListeners =
+  function (app) {
+    app.get(apiURL + '/orders', function (req, res) {
+      handleGetOrders(req, res);
+    });
+  }//registerListeners
+
+handleGetOrders = function (req, res) {
+  getOrdersFromDBTable(req, res);
+}
+
+getOrdersFromDBTable = function (req, res) {
+  handleDatabaseOperation(req, res, function (request, response, connection) {
+    var selectStatement = "select id, customer_id, customer_name, status , shipping_destination from dvx_orders order by last_updated_timestamp";
+    connection.execute(selectStatement, {}
+      , function (err, result) {
+        if (err) {
+          return cb(err, conn);
+        } else {
+          try {
+            var orders = result.rows;
+            orders = transformOrders(orders);
+            response.writeHead(200, { 'Content-Type': 'application/json' });
+            response.end(JSON.stringify(orders));
+          } catch (e) {
+            console.error("Exception in callback from execute " + e)
+          }
+        }
+      });
+  })
+}//getOrdersFromDBTable
+
+
+function handleDatabaseOperation(request, response, callback) {
+  var connectString = process.env.DBAAS_DEFAULT_CONNECT_DESCRIPTOR;
+  oracledb.getConnection(
+    {
+      user:  process.env.DBAAS_USER_NAME,
+      password: process.env.DBAAS_USER_PASSWORD ,
+      connectString: connectString
+    },
+    function (err, connection) {
+      if (err) {
+        console.log('Error in acquiring connection ...');
+        console.log('Error message ' + err.message);
+        return;
+      }
+      // do with the connection whatever was supposed to be done
+      console.log('Connection acquired ; go execute - call callback ');
+      callback(request, response, connection);
+    });
+}//handleDatabaseOperation
+
+
+function doRelease(connection) {
+  connection.release(
+    function (err) {
+      if (err) {
+        console.error(err.message);
+      }
+    });
+}
+
+function doClose(connection, resultSet) {
+  resultSet.close(
+    function (err) {
+      if (err) { console.error(err.message); }
+      doRelease(connection);
+    });
+}
