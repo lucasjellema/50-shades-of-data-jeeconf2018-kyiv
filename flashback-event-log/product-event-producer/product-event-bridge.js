@@ -12,7 +12,8 @@ var server = http.createServer(app);
 
 var PORT = process.env.PORT || 3010;
 var APP_VERSION = '0.0.4.06';
-var topicName = "a516817-productstopic";
+//var topicName = "a516817-productstopic";
+var topicName = "productstopic";
 
 //CORS middleware - taken from http://stackoverflow.com/questions/7067966/how-to-allow-cors-in-express-node-js
 var allowCrossDomain = function(req, res, next) {

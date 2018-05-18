@@ -1,0 +1,34 @@
+[{"title": "15 Years of Spring: Evolving a Java Application Framework"
+, "speakers":"Juergen Hoeller"}
+,{"title": "Building Event-Driven Microservices with Event Sourcing and CQRS", "speakers":"Lidan Hifi"}
+,{"title": "50 Shades of Data – how, when and why Big, Relational, NoSQL, Elastic, Graph, Event", "speakers":"Lucas Jellema"}
+,{"title": "What does it take to manage remote teams?", "speakers":"Sinan Ata"}
+,{"title": "Spring Framework 5: Feature Highlights & Hidden Gems", "speakers":"Juergen Hoeller"}
+,{"title": "Graal, Truffle, SubstrateVM and other perks: what are those and why do you need them", "speakers":"Oleg Chirukhin"}
+,{"title": "Easy microservices with JHipster", "speakers":"Sendil Kumar"}
+,{"title": "Developing multiplatform projects in Kotlin", "speakers":"Dmitry Jemerov"}
+,{"title": "BOF SESSION - Spring: current state and future trends", "speakers":"Juergen Hoeller"}
+,{"title": "Stand up: Madness in IT", "speakers":"Viktor Polishchuk "}
+,{"title": "BOF SESSION Java 9/10: new features", "speakers":"Volker Simonis, Oleg Chirukhin, Alexander Belokrylov"}
+,{"title": "Hexagonal Architecture with Spring Boot", "speakers":"Mikalai Alimenkou"}
+,{"title": "Designing Fault Tolerant Microservices", "speakers":"Orkhan Gasimov"}
+,{"title": "Decomposing Java applications", "speakers":"Milen Dyankov"}
+,{"title": "Containerising bootiful microservices", "speakers":"Ivan Vasyliev"}
+,{"title": "From idea to production with serverless architecture", "speakers":"Kirill Zotin"}
+,{"title": "Refactoring Monolith to Microservices", "speakers":"Orkhan Gasimov "}
+,{"title": "Beyond the Java ecosystem – integrating platforms and languages", "speakers":"Tamas Rozman"}
+,{"title": "From HashMaps to Redis: Contests’ evolution", "speakers":"Matvey Maslov"}
+,{"title": "Natural language processing pipeline with Apache Spark", "speakers":"Vitalii Kotliarenko"}
+,{"title": "Big data analytics using a custom SQL engine", "speakers":"Andrii Tsvelodub"}
+,{"title": "Virtual machine for regular expressions", "speakers":"Alexander Yakushev "}
+,{"title": "We merged Apache Cassandra and Apache Solr under an unified API: guess what happened?", "speakers":"Benoit Doumas"}
+,{"title": "BOF SESSION Kotlin: new silver bullet or the future", "speakers":"Dmitry Jemerov"}
+,{"title": "BOF SESSION Infrastructure as a code", "speakers":"Volodymyr Tsap, Aleksandr Tarasov"}
+,{"title": "Fast and accurate metrics. Is it actually possible?", "speakers":"Bogdan Storozhuk"}
+,{"title": "Atomix & Distributed Fighters", "speakers":"Andriy Rymar"}
+,{"title": "Spring Boot and Xtend: black magic session with exposure", "speakers":"Andrey Kogun"}
+,{"title": "Docker as productivity boost for Java developer", "speakers":"Igor Dmitriev"}
+,{"title": "Class Data Sharing in the HotSpot VM", "speakers":"Volker Simonis"}
+,{"title": "Gradle how to’s", "speakers":"Serhii Belei"}
+,{"title": "Ultimate journey towards real-time data platform with 2.5M/s", "speakers":"Boris Trofimov"}
+]

@@ -3,6 +3,11 @@
   // from the Oracle Event Hub - Platform Cluster Connect Descriptor
 var kafkaConnectDescriptor = "129.150.77.116";
 
+var TOPIC_NAME = process.env.KAFKA_TOPIC || 'productstopic';
+var kafkaHost = process.env.KAFKA_HOST || "192.168.188.102";
+var zookeeperPort = process.env.ZOOKEEPER_PORT || 2181;
+
+
 var Producer = kafka.Producer
 KeyedMessage = kafka.KeyedMessage;
 
@@ -21,7 +26,8 @@ function initializeKafkaProducer(attempt) {
 
 
     console.log(`Try to initialize Kafka Client at ${kafkaConnectDescriptor} and Producer, attempt ${attempt}`);
-    client = new kafka.Client(kafkaConnectDescriptor);
+   // client = new kafka.Client(kafkaConnectDescriptor);
+    client = new kafka.Client(kafkaHost + ":" + zookeeperPort + "/")
     console.log("created client");
     producer = new Producer(client);
     console.log("submitted async producer creation request");

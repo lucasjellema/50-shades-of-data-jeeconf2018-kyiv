@@ -1,0 +1,9 @@
+{
+  "runtime":{
+    "majorVersion":"8"
+  },
+  "command": "node tweetListener.js",
+  "release": {},
+  "notes": "Listenes to Tweet topic, publishes to Elastic Index "
+}
+

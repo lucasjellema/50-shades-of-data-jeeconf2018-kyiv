@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>JEEConf 2018 - Tweet Master</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script>
+        function toggle(elementId) {
+           var elementToToggle =  document.getElementById(elementId);
+           elementToToggle.style.display = elementToToggle.style.display=='none'?'':'none'; 
+        }
+    </script>
+<style >
+td {  padding: 10px; }
+.tweetLikeCount {font-weight: bold; background-color: coral}
+.floatRight {     float: right; }
+</style>
+
+</head>
+
+<body>
+    <div class="container-fluid">
+        <img src="images/jeeconf-logo.png" width="300px" class="floatRight"/>
+        <h1>JEEConf 2018 Tweet Board</h1>
+        <br/>
+        <!-- output is container used by sse-handler -->
+        <div id="output">
+        </div>
+        <a href="#" onclick="toggle('recentTweetLikes')">Toggle Recent Tweet Likes</a>
+        <div id="recentTweetLikes"  style="display:none">
+            <h2>Recent Tweet Likes</h2>
+            <table id="recentLikesTable" style="width:70%;display: inline-block">
+                <tr>
+                    <th>Time</th>
+                    <th>Tag</th>
+                    <th>Tweet</th>
+                    <th>Hashtag</th>
+                </tr>
+            </table>
+        </div>
+        <br/>
+        <a href="#" onclick="toggle('runningTop3TweetLikes')">Toggle Running Top 3 Tweet Likes (over last 60 seconds)</a>
+        <div id="runningTop3TweetLikes" style="display:none">
+            <h2>Running Top 3 Tweet Likes (last 30 seconds)</h2>
+            <table id="recentLikesTable">
+                <tr>
+                    <th>Time</th>
+                    <th>Tag</th>
+                    <th>Running Top 3</th>
+                </tr>
+                <tr>
+                    <td id="jeeconfTop3LikesTime"></td>
+                    <td>JEEConf</th>
+                        <td>
+                            <table id="jeeconfTop3LikesTimeTable">
+                                <tr>
+                                    <th>Tweet</th>
+                                    <th>Author</th>
+                                    <th>Tweet Count</th>
+                                </tr>
+                            </table>
+                        </td>
+                </tr>
+                <tr>
+                    <td id="javaTop3LikesTime"></td>
+                    <td>Java</th>
+                        <td>
+                            <table id="javaTop3LikesTimeTable">
+                                <tr>
+                                    <th>Tweet</th>
+                                    <th>Author</th>
+                                    <th>Tweet Count</th>
+                                </tr>
+                            </table>
+                        </td>
+                </tr>
+                <tr>
+                    <td id="oraclecodeTop3LikesTime"></td>
+                    <td>Oracle Code</th>
+                        <td>
+                            <table id="oraclecodeTop3LikesTimeTable">
+                                <tr>
+                                    <th>Tweet</th>
+                                    <th>Author</th>
+                                    <th>Tweet Count</th>
+                                </tr>
+                            </table>
+                        </td>
+                </tr>
+            </table>
+        </div>
+        <br/>
+        <a href="#" onclick="toggle('currentTweetCount')">Toggle Running Tweet Count</a>
+        <div id="currentTweetCount" style="display:none">
+            <h2>Current Tweet Count</h2>
+            <table id="currentTweetCountTable">
+                <tr>
+                    <th>Tag</th>
+                    <th>Tweet Count</th>
+                </tr>
+                <tr>
+                <td>JEEConf</td>
+                    <td><span id="jeeconfTweetCount"></span></td>
+                </tr>
+                <tr>
+                    <td>Java</td>
+                    <td><span id="javaTweetCount"></span></td>
+                </tr>
+                <tr>
+                    <td>OracleCode</td>
+                    <td><span id="oraclecodeTweetCount"></span></td>
+                </tr>
+            </table>
+        </div>
+        <h2>Live Tweet Stream</h2>
+        <table id="tweetsTable">
+            <tr>
+                <th><img src="images/like-tweet.jpg" width="100" /></th>
+                <th>Tag&nbsp;</th>
+                <th>Author&nbsp;</th>
+                <th>Tweet&nbsp;</th>
+                <th>Hashtag</th>
+            </tr>
+        </table>
+        <br/>
+    </div>
+    <script src="js/websocket.js"></script>
+    <script src="js/sse-handler.js"></script>
+
+</body>
+
+</html>
